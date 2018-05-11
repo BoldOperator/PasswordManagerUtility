@@ -23,8 +23,6 @@ function getGroups($groupsVar){
     $Groups
 }
 
-getGroups ("Custom Group 1","Custom Group 2","CustomDoesNotExist")
-
 function adCmdlets(){
     # Check if AD cmdlets are installed and prompt to install them to continue; otherwise import them.
     if (!(Get-Module -ListAvailable -Name activedirectory)){
