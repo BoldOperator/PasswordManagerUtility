@@ -1,4 +1,5 @@
-﻿$Groups = @()
+﻿#Adding a comment
+$Groups = @()
 
 function getGroups($groupsVar){
 
