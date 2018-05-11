@@ -39,6 +39,7 @@ function adCmdlets(){
         }
 
     else {
+        Write-Host "Active Directory module are installed. Importing..."
         Import-Module activedirectory
     }
 }
