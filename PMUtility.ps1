@@ -1,5 +1,4 @@
-﻿#Adding a comment
-$Groups = @()
+﻿$Groups = @()
 
 function getGroups($groupsVar){
 
@@ -24,20 +23,20 @@ function getGroups($groupsVar){
 }
 
 function adCmdlets(){
-    # Check if AD cmdlets are installed and prompt to install them to continue; otherwise import them.
+    # Check if AD cmdlets are installed and install them to continue; otherwise import them.
     if (!(Get-Module -ListAvailable -Name activedirectory)){
-        $response = Read-Host "Active Directory modules are not installed. Do you want to install them now to continue? [Y/N]"
-        switch ($response.ToLower()){
-            "y" {
-                Add-WindowsFeature RSAT-AD-PowerShell
-                Import-Module activedirectory
-            }
-            "n" {
-                Return
-            }
+        Write-Host "Active Directory module is not installed. This required module will be installed in five seconds. Press CTRL+C to cancel."
+        
+        1..5 | foreach {
+        sleep -Seconds 1 
+        Write-Host "." -NoNewline
+        }        
+        
+        Add-WindowsFeature RSAT-AD-PowerShell
+        Import-Module activedirectory
+                     
+            
         }
-    
-    }
 
     else {
         Import-Module activedirectory
